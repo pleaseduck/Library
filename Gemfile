@@ -5,7 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'curl', '~> 0.0.9'
+gem 'rvm', '~> 1.11', '>= 1.11.3.9'
+gem 'nodejs-rails', '~> 0.0.1'
+gem 'sprockets', '~> 3.7', '>= 3.7.1'
+gem "twitter-bootstrap-rails"
+gem 'simple_form', '~> 4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use mysql as the database for Active Record
