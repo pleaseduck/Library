@@ -10,13 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415130439) do
+ActiveRecord::Schema.define(version: 20180417135507) do
+
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "library_id"
+    t.string "name", default: "", null: false
+    t.string "cipher", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_books_on_library_id"
+  end
+
+  create_table "extraditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "books_id"
+    t.bigint "subscribers_id"
+    t.datetime "extradition_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["books_id"], name: "index_extraditions_on_books_id"
+    t.index ["subscribers_id"], name: "index_extraditions_on_subscribers_id"
+  end
+
+  create_table "libraries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "number", default: "", null: false
+    t.text "name", null: false
+    t.text "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", default: "", null: false
-    t.string "description", default: "", null: false
+    t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "library_id"
+    t.integer "ticket_number", null: false
+    t.string "surname", default: "", null: false
+    t.string "name", default: "", null: false
+    t.text "address", null: false
+    t.integer "phone_number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_subscribers_on_library_id"
+  end
+
+  create_table "workers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "library_id"
+    t.string "surname", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "position", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["library_id"], name: "index_workers_on_library_id"
   end
 
 end

@@ -1,27 +1,26 @@
-<h1>Страницы</h1>
+
+
+<h1>Pages</h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Название</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @page.each do |page| %>
-    <tr>
-      <td>
-        <%= page.name %>
-      </td>
-      <td>
-        <%= link_to 'Edit', edit_page_path(page)%>
-      </td>
-      <td>
-        <%= link_to 'Destroy', page_path(page), method: :delete, data: {confirm: 'Вы уверены?'}%>
-      </td>
-    </tr>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.name %></td>
+        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Page', new_page_path  %>
+<br>
+
+<%= link_to 'New Page', new_page_path %>
