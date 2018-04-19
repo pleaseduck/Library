@@ -9,6 +9,6 @@ class Extradition < ApplicationRecord
   private
 
   def extradition_params
-    params.require(extradition).permit(:subscriber_id, :book_id)
+    params.require(extradition).permit( :subscriber_id, :book_id)
   end
 end
