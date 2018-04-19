@@ -4,8 +4,10 @@
 <br>
 <h4>Адрес: <br><%= @subscriber.address%></h4>
 <br>
+<h4>Номер телефона: <br><%= @subscriber.phone_number%></h4>
+<br>
 <h4>Идентификатор абонента: <br><%= @subscriber.id%></h4>
 <br>
 <h4>Идентификатор библиотеки: <br><%= @subscriber.library_id%></h4>
-<%= link_to 'Edit', edit_subscriber_path(@subscriber) %> |
-<%= link_to 'Back', subscribers_path %>
+<%= link_to 'Редактировать', edit_subscriber_path(@subscriber) %> |
+<%= link_to 'Назад', subscribers_path %>

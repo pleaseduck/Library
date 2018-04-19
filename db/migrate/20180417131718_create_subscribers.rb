@@ -8,7 +8,7 @@ class CreateSubscribers < ActiveRecord::Migration[5.1]
       t.string :surname, null: false, default: ''
       t.string :name, null: false, default: ''
       t.text :address, null: false
-      t.integer :phone_number, null: false
+      t.string :phone_number, null: false, default: ''
       t.timestamps
     end
   end

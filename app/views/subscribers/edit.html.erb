@@ -1,5 +1,22 @@
 <h1>Редактировать запись</h1>
 
-<%= render 'form', subscriber: @subscriber %>
+<%= simple_form_for(@subscriber) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= link_to 'Back', subscribers_path %>
+  <div class="form-inputs">
+    <%= f.input :name, label: 'Имя' %>
+    <%= f.input :surname, label: 'Фамилия' %>
+    <%= f.input :address, label: 'Адрес' %>
+    <%= f.input :phone_number, label: 'Номер телефона' %>
+    <%= f.input :ticket_number, label: 'Номер билета' %>
+    <%= f.input :library_id, label: 'Идентификатор библиотеки'%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Сохранить изменения' %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Назад', subscribers_path %>

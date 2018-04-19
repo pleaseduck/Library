@@ -4,16 +4,16 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :surname %>
-    <%= f.input :address %>
-    <%= f.input :phone_number %>
-    <%= f.input :ticket_number %>
-    <%= f.input :library_id %>
+    <%= f.input :name, label: 'Имя' %>
+    <%= f.input :surname, label: 'Фамилия' %>
+    <%= f.input :address, label: 'Адрес' %>
+    <%= f.input :phone_number, label: 'Номер телефона' %>
+    <%= f.input :ticket_number, label: 'Номер билета' %>
+    <%= f.input :library_id, label: 'Идентификатор библиотеки'%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Добавить абонента' %>
   </div>
 
 <% end %>

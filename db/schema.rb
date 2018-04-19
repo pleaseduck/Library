@@ -22,13 +22,11 @@ ActiveRecord::Schema.define(version: 20180417135507) do
   end
 
   create_table "extraditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "books_id"
-    t.bigint "subscribers_id"
+    t.bigint "book_id"
+    t.bigint "subscriber_id"
     t.datetime "extradition_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["books_id"], name: "index_extraditions_on_books_id"
-    t.index ["subscribers_id"], name: "index_extraditions_on_subscribers_id"
   end
 
   create_table "libraries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
