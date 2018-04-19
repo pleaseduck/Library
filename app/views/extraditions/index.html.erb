@@ -1,26 +1,67 @@
 <h1>Выдачи</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список библиотек</h4>
+        </thead>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+        <tbody>
+          <% @libraries.each do |library| %>
+            <tr>
+              <td><%= library.name %></td>
+              <td><%= library.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6 col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список выдач</h4>
+        </thead>
 
-  <tbody>
-    <% @extraditions.each do |extradition| %>
-      <tr>
-        <td>Идентификатор абонента: <%= extradition.subscriber_id %></td>
-        <td>Идентификатор книги: <%= extradition.book_id %></td>
-        <td>Дата выдачи: <%= extradition.extradition_date %></td>
-        <td><%= link_to 'Показать', extradition %></td>
-        <td><%= link_to 'Редактировать', edit_extradition_path(extradition) %></td>
-        <td><%= link_to 'Удалить', extradition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @extraditions.each do |extradition| %>
+            <tr>
+              <td>Идентификатор абонента: <%= extradition.subscriber_id %></td>
+              <td>Идентификатор книги: <%= extradition.book_id %></td>
+              <td>Дата выдачи: <%= extradition.extradition_date %></td>
+              <td><%= link_to 'Показать', extradition %></td>
+              <td><%= link_to 'Редактировать', edit_extradition_path(extradition) %></td>
+              <td><%= link_to 'Удалить', extradition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Добавить выдачу', new_extradition_path %>
+    </div>
+    <div class="col-sm-2  col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список книг</h4>
+        </thead>
 
-<br>
-
-<%= link_to 'Добавить выдачу', new_extradition_path %>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= book.name %></td>
+              <td><%= book.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

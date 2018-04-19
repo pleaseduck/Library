@@ -1,0 +1,46 @@
+<h1>Популярные книги</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Выберите библиотеку</h4>
+        </thead>
+
+        <tbody>
+          <% @libraries.each do |library| %>
+          <tr>
+            <td><%= link_to library.name, popularbooks_path(library_id: library.id) %></td>
+            <td><%= link_to 'Показать', library %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Рейтинг книг</h4>
+        </thead>
+
+        <tbody>
+          <% @books.sort{|a, b| b.extraditions.length <=> a.extraditions.length}.each do |book| %>
+            <tr>
+              <td>Наименвоание книги: <%= book.name %></td>
+              <td>Шифр книги: <%= book.cipher %></td>
+              <td><%= link_to 'Показать', book %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

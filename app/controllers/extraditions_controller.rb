@@ -2,6 +2,8 @@ class ExtraditionsController < ApplicationController
 
   def index
     @extraditions = Extradition.all
+    @libraries = Library.all
+    @books = Book.all
   end
 
   # GET /pages/1

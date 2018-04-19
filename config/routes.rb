@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :subscribers
   resources :books
   resources :extraditions
+  resources :popularbooks
 
   root 'libraries#index'
   #root 'pages#welcome'
