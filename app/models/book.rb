@@ -4,6 +4,10 @@ class Book < ApplicationRecord
 
   belongs_to :library
 
+  validates :name, presence: true
+  validates :cipher, presence: true
+  validates :library_id, presence: true
+
   def create
     Book.create(book_params)
   end

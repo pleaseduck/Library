@@ -45,7 +45,7 @@
         <a class="navbar-brand" href="#">Library</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", about_us_path  %></li>
+            <li><%= link_to "Link1", "/path1" %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
@@ -61,13 +61,9 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h3><%= link_to 'Pages', pages_path  %></h3>
+            <h3><%= link_to 'Libraries', libraries_path  %></h3>
             <ul class="nav nav-list">
-              <% @pages.each do |page| %>
-                <li>
-                  <%= link_to page.name, page_path(page) %>
-                </li>
-              <% end %>
+
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

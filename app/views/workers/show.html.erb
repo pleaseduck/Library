@@ -1,0 +1,9 @@
+<h1><%= @worker.name%> <%= @worker.surname%></h1>
+<br>
+<h4>Должность: <br><%= @worker.position%></h4>
+<br>
+<h4>Идентификатор работника: <br><%= @worker.id%></h4>
+<br>
+<h4>Идентификатор библиотеки: <br><%= @worker.library_id%></h4>
+<%= link_to 'Edit', edit_worker_path(@worker) %> |
+<%= link_to 'Back', libraries_path %>

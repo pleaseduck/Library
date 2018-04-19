@@ -1,0 +1,24 @@
+<h1>Список библиотеки</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @libraries.each do |library| %>
+      <tr>
+        <td><%= library.name %></td>
+        <td><%= link_to 'Показать', library %></td>
+        <td><%= link_to 'Редактировать', edit_library_path(library) %></td>
+        <td><%= link_to 'Удалить', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить библиотеку', new_library_path %>

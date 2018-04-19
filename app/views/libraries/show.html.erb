@@ -1,0 +1,9 @@
+<h1><%= @library.name%></h1>
+<br>
+<h4>Номер библиотеки: <br><%= @library.number%></h4>
+<br>
+<h4>Адрес библиотеки: <br><%= @library.address%></h4>
+<br>
+<h4>Идентификатор библиотеки: <br><%= @library.id%></h4>
+<%= link_to 'Edit', edit_library_path(@library) %> |
+<%= link_to 'Back', libraries_path %>
