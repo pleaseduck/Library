@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20180417135507) do
     t.string "surname", default: "", null: false
     t.string "name", default: "", null: false
     t.text "address", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["library_id"], name: "index_subscribers_on_library_id"

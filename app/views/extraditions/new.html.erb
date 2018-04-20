@@ -1,5 +1,66 @@
 <h1>Добавить выдачу</h1>
 
-<%= render 'form', extradition: @extradition %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список библиотек</h4>
+        </thead>
+
+        <tbody>
+          <% @subscribers.each do |subscriber| %>
+            <tr>
+              <td><%= subscriber.name %> <%= subscriber.surname %></td>
+              <td><%= subscriber.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-6 col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+              <td><%= render 'form', extradition: @extradition %></td>
+            </tr>
+
+        </tbody>
+      </table>
+      <%= link_to 'Добавить выдачу', new_extradition_path %>
+    </div>
+    <div class="col-sm-2  col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список книг</h4>
+        </thead>
+
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= book.name %></td>
+              <td><%= book.id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
 
 <%= link_to 'Назад', extraditions_path %>

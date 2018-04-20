@@ -1,4 +1,4 @@
-class Worker < ApplicationRecord
+class Worker < ActiveRecord::Base
 
   belongs_to :library
 
@@ -7,7 +7,7 @@ class Worker < ApplicationRecord
   validates :position, presence: true
   validates :library_id, presence: true
 
-  
+
   def create
     Worker.create(worker_params)
   end

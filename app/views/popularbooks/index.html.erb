@@ -16,7 +16,6 @@
           <% @libraries.each do |library| %>
           <tr>
             <td><%= link_to library.name, popularbooks_path(library_id: library.id) %></td>
-            <td><%= link_to 'Показать', library %></td>
           </tr>
         <% end %>
         </tbody>
@@ -34,7 +33,7 @@
         <tbody>
           <% @books.sort{|a, b| b.extraditions.length <=> a.extraditions.length}.each do |book| %>
             <tr>
-              <td>Наименвоание книги: <%= book.name %></td>
+              <td><%= book.name %></td>
               <td>Шифр книги: <%= book.cipher %></td>
               <td><%= link_to 'Показать', book %></td>
             </tr>

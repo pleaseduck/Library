@@ -1,8 +1,8 @@
-class Book < ApplicationRecord
+class Book < ActiveRecord::Base
   has_many :extraditions
   has_many :subscribers, :through => :extraditions
 
-  belongs_to :library
+  belongs_to :library, dependent: :destroy
 
   validates :name, presence: true
   validates :cipher, presence: true

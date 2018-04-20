@@ -1,7 +1,7 @@
 class Library < ActiveRecord::Base
-  has_many :subscribers
-  has_many :workers
-  has_many :books
+  has_many :subscribers, dependent: :destroy
+  has_many :workers, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   validates :name, presence: true
   validates :number, presence: true

@@ -10,7 +10,7 @@
   <tbody>
     <% @subscribers.each do |subscriber| %>
       <tr>
-        <td><%= subscriber.name %></td>
+        <td><%= subscriber.name %> <%= subscriber.surname %></td>
         <td><%= link_to 'Показать', subscriber %></td>
         <td><%= link_to 'Редактировать', edit_subscriber_path(subscriber) %></td>
         <td><%= link_to 'Удалить', subscriber, method: :delete, data: { confirm: 'Вы уверены?' } %></td>

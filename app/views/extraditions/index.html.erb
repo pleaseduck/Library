@@ -11,10 +11,10 @@
         </thead>
 
         <tbody>
-          <% @libraries.each do |library| %>
+          <% @subscribers.each do |subscriber| %>
             <tr>
-              <td><%= library.name %></td>
-              <td><%= library.id %></td>
+              <td><%= subscriber.name %> <%= subscriber.surname %></td>
+              <td><%= subscriber.id %></td>
             </tr>
           <% end %>
         </tbody>

@@ -2,7 +2,7 @@ class ExtraditionsController < ApplicationController
 
   def index
     @extraditions = Extradition.all
-    @libraries = Library.all
+    @subscribers = Subscriber.all
     @books = Book.all
   end
 
@@ -15,6 +15,8 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
+    @books = Book.all
+    @subscribers = Subscriber.all
   end
 
   # GET /pages/1/edit

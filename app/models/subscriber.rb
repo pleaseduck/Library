@@ -1,5 +1,5 @@
-class Subscriber < ApplicationRecord
-  belongs_to :library
+class Subscriber < ActiveRecord::Base
+  belongs_to :library, dependent: :destroy
   has_many :extraditions
   has_many :books, :through => :extraditions
 
