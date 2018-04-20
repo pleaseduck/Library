@@ -1,6 +1,6 @@
 class Extradition < ActiveRecord::Base
-  belongs_to :subscriber, dependent: :destroy
-  belongs_to :book, dependent: :destroy
+  belongs_to :subscriber
+  belongs_to :book
 
   validates :subscriber_id, presence: true
   validates :book_id, presence: true
