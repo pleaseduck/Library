@@ -1,9 +1,17 @@
 class ExtraditionsController < ApplicationController
 
   def index
-    @extraditions = Extradition.all
-    @subscribers = Subscriber.all
-    @books = Book.all
+    if params[:library_id]
+      @libraries = Library.all
+      @books = Book.all.where(library_id: params[:library_id])
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @extraditions = Extradition.all.where(library_id: params[:library_id])
+    else
+      @extraditions = Extradition.all
+      @libraries = Library.all
+      @subscribers = Subscriber.all
+      @books = Book.all
+    end
   end
 
   # GET /pages/1
@@ -15,8 +23,19 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
-    @books = Book.all
-    @subscribers = Subscriber.all
+    #@books = Book.all
+    #@subscribers = Subscriber.all
+    if params[:library_id]
+      @libraries = Library.all
+      @books = Book.all.where(library_id: params[:library_id])
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @extraditions = Extradition.all.where(library_id: params[:library_id])
+    else
+      @extraditions = Extradition.all
+      @libraries = Library.all
+      @subscribers = Subscriber.all
+      @books = Book.all
+    end
   end
 
   # GET /pages/1/edit
@@ -27,6 +46,17 @@ class ExtraditionsController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
+    if params[:library_id]
+      @libraries = Library.all
+      @books = Book.all.where(library_id: params[:library_id])
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @extraditions = Extradition.all.where(library_id: params[:library_id])
+    else
+      @extraditions = Extradition.all
+      @libraries = Library.all
+      @subscribers = Subscriber.all
+      @books = Book.all
+    end
     @extradition = Extradition.create(extradition_params)
     if @extradition.errors.empty?
       redirect_to extradition_path(@extradition)
@@ -59,7 +89,7 @@ class ExtraditionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def extradition_params
       #params.fetch(:page, {name})
-      params[:extradition].permit(:subscriber_id, :book_id, :extradition_date)
+      params[:extradition].permit(:subscriber_id, :book_id,:library_id, :extradition_date)
     end
 
 end

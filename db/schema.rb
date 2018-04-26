@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426155622) do
+ActiveRecord::Schema.define(version: 20180417135507) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "library_id"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20180426155622) do
   create_table "extraditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "subscriber_id"
     t.bigint "book_id"
-    t.datetime "extradition_date"
-    t.datetime "return_date"
+    t.date "extradition_date"
+    t.date "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_extraditions_on_book_id"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 20180426155622) do
     t.string "education", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "patronymic"
     t.index ["library_id"], name: "index_workers_on_library_id"
   end
 

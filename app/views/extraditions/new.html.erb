@@ -8,16 +8,15 @@
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4>Список библиотек</h4>
+          <h4>Выберите библиотеку</h4>
         </thead>
 
         <tbody>
-          <% @subscribers.each do |subscriber| %>
-            <tr>
-              <td><%= subscriber.name %> <%= subscriber.surname %></td>
-              <td><%= subscriber.id %></td>
-            </tr>
-          <% end %>
+          <% @libraries.each do |library| %>
+          <tr>
+            <td><%= link_to library.name, new_extradition_path(library_id: library.id) %></td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
@@ -30,7 +29,13 @@
         </thead>
 
         <tbody>
-
+            <tr>
+              <select class="selectpicker">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+              </select>
+            </tr>
             <tr>
               <td><%= render 'form', extradition: @extradition %></td>
             </tr>
@@ -49,10 +54,10 @@
         </thead>
 
         <tbody>
-          <% @books.each do |book| %>
+          <% @subscribers.each do |subscriber| %>
             <tr>
-              <td><%= book.name %></td>
-              <td><%= book.id %></td>
+              <td><%= subscriber.name %></td>
+              <td><%= subscriber.id %></td>
             </tr>
           <% end %>
         </tbody>

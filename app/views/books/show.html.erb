@@ -11,5 +11,6 @@
 <h4>Цена: <br><%= @book.price%></h4>
 <br>
 <h4>Библиотека: <br><%= @book.library.name%></h4>
+<h4>Книга выдана <%= @book.extraditions.count%> раз(а)</h4>
 <%= link_to 'Редактировать', edit_book_path(@book) %> |
 <%= link_to 'Назад', books_path %>
