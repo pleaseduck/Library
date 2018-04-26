@@ -4,6 +4,10 @@ class Worker < ActiveRecord::Base
 
   validates :name, presence: true
   validates :surname, presence: true
+  validates :patronymic, presence: true
+  validates :birthday, presence: true
+  validates :employment_day, presence: true
+  validates :education, presence: true
   validates :position, presence: true
   validates :library_id, presence: true
 

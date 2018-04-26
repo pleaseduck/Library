@@ -5,6 +5,7 @@ class Subscriber < ActiveRecord::Base
 
   validates :name, presence: true
   validates :surname, presence: true
+  validates :patronymic, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :ticket_number, presence: true

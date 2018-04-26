@@ -6,10 +6,11 @@
   <div class="form-inputs">
     <%= f.input :name, label: 'Имя' %>
     <%= f.input :surname, label: 'Фамилия' %>
+    <%= f.input :patronymic, label: 'Фамилия' %>
     <%= f.input :address, label: 'Адрес' %>
     <%= f.input :phone_number, label: 'Номер телефона' %>
     <%= f.input :ticket_number, label: 'Номер билета' %>
-    <%= f.input :library_id, label: 'Идентификатор библиотеки'%>
+    <%= f.association :library, label: 'Библиотека' %>
   </div>
 
   <div class="form-actions">

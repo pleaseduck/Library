@@ -6,8 +6,12 @@
   <div class="form-inputs">
     <%= f.input :name, label: 'Имя' %>
     <%= f.input :surname, label: 'Фамилия' %>
+    <%= f.input :patronymic, label: 'Отчество' %>
+    <%= f.input :birthday, as: :string, input_html: {type: :date}, label: 'День рождения' %>
+    <%= f.input :employment_day, as: :string, input_html: {type: :date}, label: 'Дата принятия на работу' %>
     <%= f.input :position, label: 'Должность' %>
-    <%= f.input :library_id, label: 'Идентификатор библиотеки' %>
+    <%= f.input :education, label: 'Образование' %>
+    <%= f.association :library, label: 'Библиотека' %>
   </div>
 
   <div class="form-actions">

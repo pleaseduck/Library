@@ -5,6 +5,8 @@ class Book < ActiveRecord::Base
   belongs_to :library, dependent: :destroy
 
   validates :name, presence: true
+  validates :author, presence: true
+  validates :price, presence: true
   validates :cipher, presence: true
   validates :library_id, presence: true
 

@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    if params[:library_id]
+      @libraries = Library.all
+      @books = Book.all.where(library_id: params[:library_id])
+    else
+      @libraries = Library.all
+      @books = Book.all
+    end
   end
 
   # GET /pages/1
@@ -55,7 +61,7 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       #params.fetch(:page, {name})
-      params[:book].permit(:name, :cipher, :library_id)
+      params[:book].permit(:name, :cipher,:author, :publishing_house, :publishing_date, :price,  :library_id)
     end
 
 

@@ -10,23 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417135507) do
+ActiveRecord::Schema.define(version: 20180426155622) do
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "library_id"
+    t.integer "library_id"
+    t.integer "book_id"
     t.string "name", default: "", null: false
+    t.string "author", default: "", null: false
     t.string "cipher", default: "", null: false
+    t.string "publishing_house", default: "", null: false
+    t.string "publishing_date", default: "", null: false
+    t.string "price", default: "", null: false
+    t.string "entrance_date", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["library_id"], name: "index_books_on_library_id"
   end
 
   create_table "extraditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "book_id"
     t.bigint "subscriber_id"
+    t.bigint "book_id"
     t.datetime "extradition_date"
+    t.datetime "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_extraditions_on_book_id"
+    t.index ["subscriber_id"], name: "index_extraditions_on_subscriber_id"
   end
 
   create_table "libraries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -37,32 +46,31 @@ ActiveRecord::Schema.define(version: 20180417135507) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name", default: "", null: false
-    t.text "description", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "library_id"
+    t.integer "library_id"
+    t.integer "subscriber_id"
     t.integer "ticket_number", null: false
     t.string "surname", default: "", null: false
     t.string "name", default: "", null: false
+    t.string "patronymic", default: "", null: false
     t.text "address", null: false
-    t.string "phone_number", null: false
+    t.string "phone_number", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["library_id"], name: "index_subscribers_on_library_id"
   end
 
   create_table "workers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "library_id"
+    t.integer "library_id"
     t.string "surname", default: "", null: false
     t.string "name", default: "", null: false
+    t.date "birthday"
+    t.date "employment_day"
     t.string "position", default: "", null: false
+    t.string "education", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "patronymic"
     t.index ["library_id"], name: "index_workers_on_library_id"
   end
 

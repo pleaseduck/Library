@@ -1,24 +1,48 @@
-<h1>Список работников</h1>
+<h1>Работники</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @workers.each do |worker| %>
-      <tr>
-        <td><%= worker.name %> <%= worker.surname %></td>
-        <td><%= link_to 'Показать', worker %></td>
-        <td><%= link_to 'Редактировать', edit_worker_path(worker) %></td>
-        <td><%= link_to 'Удалить', worker, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Выберите библиотеку</h4>
+        </thead>
 
-<%= link_to 'Добавить работника', new_worker_path %>
+        <tbody>
+          <% @libraries.each do |library| %>
+          <tr>
+            <td><%= link_to library.name, workers_path(library_id: library.id) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список работников</h4>
+        </thead>
+
+        <tbody>
+          <% @workers.each do |worker| %>
+            <tr>
+              <td><%= worker.name %> <%= worker.patronymic %> <%= worker.surname %></td>
+              <td><%= link_to 'Показать', worker %></td>
+              <td><%= link_to 'Редактировать', edit_worker_path(worker) %></td>
+              <td><%= link_to 'Удалить', worker, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Добавить работника', new_worker_path %>
+    </div>
+  </div>
+</div>

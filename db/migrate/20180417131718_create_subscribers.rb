@@ -7,6 +7,7 @@ class CreateSubscribers < ActiveRecord::Migration[5.1]
       t.integer :ticket_number, null: false
       t.string :surname, null: false, default: ''
       t.string :name, null: false, default: ''
+      t.string :patronymic, null: false, default: ''
       t.text :address, null: false
       t.string :phone_number, null: false, default: ''
       t.timestamps

@@ -1,24 +1,46 @@
-<h1>Список абонентов</h1>
+<h1>Абоненты</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Выберите библиотеку</h4>
+        </thead>
 
-  <tbody>
-    <% @subscribers.each do |subscriber| %>
-      <tr>
-        <td><%= subscriber.name %> <%= subscriber.surname %></td>
-        <td><%= link_to 'Показать', subscriber %></td>
-        <td><%= link_to 'Редактировать', edit_subscriber_path(subscriber) %></td>
-        <td><%= link_to 'Удалить', subscriber, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @libraries.each do |library| %>
+          <tr>
+            <td><%= link_to library.name, subscribers_path(library_id: library.id) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-9 col-sm-offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4>Список абонентов</h4>
+        </thead>
 
-<br>
-
-<%= link_to 'Добавить абонента', new_subscriber_path %>
+        <tbody>
+          <% @subscribers.each do |subscriber| %>
+            <tr>
+              <td><%= subscriber.name %> <%= subscriber.patronymic %> <%= subscriber.surname %></td>
+              <td><%= link_to 'Показать', subscriber %></td>
+              <td><%= link_to 'Редактировать', edit_subscriber_path(subscriber) %></td>
+              <td><%= link_to 'Удалить', subscriber, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to 'Добавить абонента', new_subscriber_path %>
+    </div>
+  </div>
+</div>

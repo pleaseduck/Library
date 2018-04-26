@@ -6,8 +6,11 @@
 
   <div class="form-inputs">
     <%= f.input :name,  label: 'Наименование книги' %>
+    <%= f.input :author,  label: 'Автор' %>
     <%= f.input :cipher, label: 'Шифр' %>
-    <%= f.input :library_id,  label: 'Идентификатор библиотеки' %>
+    <%= f.input :publishing_house, label: 'Издательство' %>
+    <%= f.input :publishing_date, label: 'Год издания' %>
+    <%= f.input :price, label: 'Цена' %>
   </div>
 
   <div class="form-actions">

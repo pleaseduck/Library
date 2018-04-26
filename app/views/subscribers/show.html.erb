@@ -1,4 +1,4 @@
-<h1><%= @subscriber.name%> <%= @subscriber.surname%></h1>
+<h1><%= @subscriber.name%> <%= @subscriber.patronymic%> <%= @subscriber.surname%></h1>
 <br>
 <h4>Номер билета: <br><%= @subscriber.ticket_number%></h4>
 <br>
@@ -6,8 +6,6 @@
 <br>
 <h4>Номер телефона: <br><%= @subscriber.phone_number%></h4>
 <br>
-<h4>Идентификатор абонента: <br><%= @subscriber.id%></h4>
-<br>
-<h4>Идентификатор библиотеки: <br><%= @subscriber.library_id%></h4>
+<h4>Место работы: <br><%= @subscriber.library.name%></h4>
 <%= link_to 'Редактировать', edit_subscriber_path(@subscriber) %> |
 <%= link_to 'Назад', subscribers_path %>

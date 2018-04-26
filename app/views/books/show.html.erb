@@ -1,9 +1,15 @@
 <h1><%= @book.name%></h1>
 <br>
+<h4>Автор: <br><%= @book.author%></h4>
+<br>
+<h4>Издательство: <br><%= @book.publishing_house%></h4>
+<br>
+<h4>Год издания: <br><%= @book.publishing_date%></h4>
+<br>
 <h4>Шифр: <br><%= @book.cipher%></h4>
 <br>
-<h4>Идентификатор книги: <br><%= @book.id%></h4>
+<h4>Цена: <br><%= @book.price%></h4>
 <br>
-<h4>Идентификатор библиотеки: <br><%= @book.library_id%></h4>
+<h4>Библиотека: <br><%= @book.library.name%></h4>
 <%= link_to 'Редактировать', edit_book_path(@book) %> |
 <%= link_to 'Назад', books_path %>

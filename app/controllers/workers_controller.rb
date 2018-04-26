@@ -1,7 +1,13 @@
 class WorkersController < ApplicationController
 
   def index
-    @workers = Worker.all
+    if params[:library_id]
+      @libraries = Library.all
+      @workers = Worker.all.where(library_id: params[:library_id])
+    else
+      @libraries = Library.all
+      @workers = Worker.all
+    end
   end
 
   # GET /pages/1
@@ -55,7 +61,7 @@ class WorkersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def worker_params
       #params.fetch(:page, {name})
-      params[:worker].permit(:name, :surname, :position, :library_id)
+      params[:worker].permit(:name, :surname, :position, :patronymic, :birthday, :education, :employment_day, :library_id)
     end
 
 end

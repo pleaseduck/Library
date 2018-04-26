@@ -1,7 +1,13 @@
 class SubscribersController < ApplicationController
 
   def index
-    @subscribers = Subscriber.all
+    if params[:library_id]
+      @libraries = Library.all
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+    else
+      @libraries = Library.all
+      @subscribers = Subscriber.all
+    end
   end
 
   # GET /pages/1
@@ -55,7 +61,7 @@ class SubscribersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
       #params.fetch(:page, {name})
-      params[:subscriber].permit(:name, :surname, :address, :phone_number, :ticket_number, :library_id)
+      params[:subscriber].permit(:name, :surname, :address, :phone_number,:patronymic, :ticket_number, :library_id)
     end
 
 end
