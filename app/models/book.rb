@@ -4,12 +4,20 @@ class Book < ActiveRecord::Base
 
   belongs_to :library, dependent: :destroy
 
-  validates :name, presence: true
-  validates :author, presence: true
-  validates :price, presence: true
-  validates :cipher, presence: true
-  validates :library_id, presence: true
+  validates_presence_of :name,
+   :message => "Поле названия книги не может быть пустым"
 
+   validates_presence_of :author,
+    :message => "Поле автора не может быть пустым"
+
+    validates_presence_of :price,
+     :message => "Поле цены не может быть пустым"
+
+    validates_presence_of :cipher,
+      :message => "Поле шифра книги не может быть пустым"
+
+      validates_presence_of :library_id,
+       :message => "Поле библиотеки не может быть пустым"
   def create
     Book.create(book_params)
   end

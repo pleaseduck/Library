@@ -3,7 +3,14 @@ class Library < ActiveRecord::Base
   has_many :workers, dependent: :destroy
   has_many :books, dependent: :destroy
 
-  validates :name, presence: true
-  validates :number, presence: true
-  validates :address, presence: true
+
+
+
+  validates_presence_of :name,
+   :message => "Поле названия библиотеки не может быть пустым"
+   validates_presence_of :number,
+    :message => "Поле номера библиотеки не может быть пустым"
+    validates_presence_of :address,
+     :message => "Поле адреса библиотеки не может быть пустым"
+
 end

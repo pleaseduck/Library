@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180429124844) do
     t.integer "library_id"
     t.string "surname", default: "", null: false
     t.string "name", default: "", null: false
+    t.string "patronymic", default: "", null: false
     t.date "birthday"
     t.date "employment_day"
     t.string "position", default: "", null: false

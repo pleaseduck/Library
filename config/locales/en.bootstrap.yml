@@ -10,12 +10,12 @@ en:
   helpers:
     actions: "Actions"
     links:
-      back: "Back"
-      cancel: "Cancel"
-      confirm: "Are you sure?"
-      destroy: "Delete"
+      back: "Назад"
+      cancel: "Отмена"
+      confirm: "Вы уверены?"
+      destroy: "Удалить"
       new: "New"
-      edit: "Edit"
+      edit: "Редактировать"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
