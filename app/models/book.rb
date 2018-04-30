@@ -17,7 +17,7 @@ class Book < ActiveRecord::Base
       :message => "Поле шифра книги не может быть пустым"
 
       validates_presence_of :library_id,
-       :message => "Поле библиотеки не может быть пустым"
+       :message => "Поле выбора библиотеки не может быть пустым"
   def create
     Book.create(book_params)
   end

@@ -2,14 +2,23 @@ class Worker < ActiveRecord::Base
 
   belongs_to :library
 
-  validates :name, presence: true
-  validates :surname, presence: true
-  validates :patronymic, presence: true
-  validates :birthday, presence: true
-  validates :employment_day, presence: true
-  validates :education, presence: true
-  validates :position, presence: true
-  validates :library_id, presence: true
+  validates_presence_of :name,
+   :message => "Поле имени не может быть пустым"
+  validates_presence_of :surname,
+   :message => "Поле фамилии не может быть пустым"
+  validates_presence_of :patronymic,
+   :message => "Поле отчества не может быть пустым"
+  validates_presence_of :birthday,
+   :message => "Поле даты рождения не может быть пустым"
+  validates_presence_of :employment_day,
+   :message => "Поле даты принятия на работу не может быть пустым"
+  validates_presence_of :education,
+   :message => "Поле образования не может быть пустым"
+  validates_presence_of :position,
+   :message => "Поле должности не может быть пустым"
+  validates_presence_of :library_id,
+   :message => "Поле выбора библиотеки не может быть пустым"
+
 
 
   def create
