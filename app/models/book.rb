@@ -16,8 +16,10 @@ class Book < ActiveRecord::Base
     validates_presence_of :cipher,
       :message => "Поле шифра книги не может быть пустым"
 
-      validates_presence_of :library_id,
-       :message => "Поле выбора библиотеки не может быть пустым"
+      validates_presence_of :library,
+       :message => "Поле библиотеки не может быть пустым"
+      validates_associated :library,
+      :message => "dgk"
   def create
     Book.create(book_params)
   end
