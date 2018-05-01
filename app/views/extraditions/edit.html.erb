@@ -4,8 +4,6 @@
 
 
 <%= simple_form_for(@extradition) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.association :subscriber, label: 'Абонент' %>
@@ -18,5 +16,5 @@
   </div>
 
 <% end %>
-
+<br>
 <%= link_to 'Назад', extraditions_path %>

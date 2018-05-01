@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180429124844) do
     t.string "cipher", default: "", null: false
     t.string "publishing_house", default: "", null: false
     t.string "publishing_date", default: "", null: false
-    t.string "price", default: "", null: false
+    t.integer "price"
     t.string "entrance_date", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
