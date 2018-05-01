@@ -5,7 +5,6 @@ class Library < ActiveRecord::Base
 
 
 
-
   validates_presence_of :name,
    :message => "Поле названия библиотеки не может быть пустым"
    validates_presence_of :number,

@@ -2,13 +2,13 @@ class ExtraditionsController < ApplicationController
 
   def index
     if params[:library_id]
-      @libraries = Library.all
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @extraditions = Extradition.all.where(library_id: params[:library_id])
+      @extraditions = Extradition.all
     else
       @extraditions = Extradition.all
-      @libraries = Library.all
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all
       @books = Book.all
     end
@@ -23,16 +23,15 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
-    #@books = Book.all
-    #@subscribers = Subscriber.all
-    if params[:library_id]
-      @libraries = Library.all
+    if params[:search]
+      #@libraries = Library.find(:all, :conditions => ["name LIKE (?)", "%#{params[:search]}%"])
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'")
+    elsif params[:library_id]
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @extraditions = Extradition.all.where(library_id: params[:library_id])
     else
-      @extraditions = Extradition.all
-      @libraries = Library.all
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all
       @books = Book.all
     end

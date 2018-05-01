@@ -2,6 +2,13 @@ class Extradition < ActiveRecord::Base
   belongs_to :subscriber
   belongs_to :book
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
   validates_presence_of :subscriber_id,
    :message => "Поле абонента не может быть пустым"
    validates_presence_of :book_id,

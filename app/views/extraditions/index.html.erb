@@ -17,6 +17,7 @@
             <td><%= link_to library.name, extraditions_path(library_id: library.id) %></td>
           </tr>
         <% end %>
+        <%= will_paginate @libraries %>
         </tbody>
       </table>
     </div>

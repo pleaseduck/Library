@@ -1,6 +1,6 @@
 <% content_for :title, "Добавить выдачу" %>
 
-<h1>Добавить выдачу</h1>
+<h1>Выдачи</h1>
 
 <div class="container">
   <div class="row">
@@ -12,19 +12,28 @@
           </tr>
           <h4>Выберите библиотеку</h4>
         </thead>
-
         <tbody>
+          <tr>
+            <td>
+              <%= form_tag new_extradition_path, :method => "get" do %>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+              <% end %>
+            </td>
+          </tr>
           <% @libraries.each do |library| %>
           <tr>
             <td><%= link_to library.name, new_extradition_path(library_id: library.id) %></td>
           </tr>
         <% end %>
+
         </tbody>
       </table>
     </div>
-    <div class="col-sm-6 col-sm-offset-1">
+    <div class="col-sm-9 col-sm-offset-1">
       <table class="table">
         <thead>
+          <h4>Добавить выдачу</h4>
           <tr>
             <th colspan="4"></th>
           </tr>
@@ -37,30 +46,7 @@
 
         </tbody>
       </table>
-      <%= link_to 'Добавить выдачу', new_extradition_path %>
-    </div>
-    <div class="col-sm-2  col-sm-offset-1">
-      <table class="table">
-        <thead>
-          <tr>
-            <th colspan="4"></th>
-          </tr>
-          <h4>Список книг</h4>
-        </thead>
-
-        <tbody>
-          <% @subscribers.each do |subscriber| %>
-            <tr>
-              <td><%= subscriber.name %></td>
-              <td><%= subscriber.id %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= link_to 'Назад', extraditions_path %>
     </div>
   </div>
 </div>
-
-
-<br>
-<%= link_to 'Назад', extraditions_path %>
