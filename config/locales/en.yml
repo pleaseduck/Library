@@ -33,3 +33,6 @@ ru:
     messages:
       required: "Библиотека должна существовать"
     format: "%{message}"
+  will_paginate:
+    previous_label: "Назад"
+    next_label: "Далее"

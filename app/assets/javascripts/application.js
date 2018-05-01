@@ -13,3 +13,10 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector(".library-filter__header").addEventListener("click",function() {
+    document.querySelector(".library-filter tbody").classList.toggle("hidden");
+    document.querySelector(".pagination--library").classList.toggle("hidden");
+  });
+});

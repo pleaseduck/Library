@@ -1,7 +1,9 @@
 class ExtraditionsController < ApplicationController
 
   def index
-    if params[:library_id]
+    if params[:search]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+    elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
@@ -23,9 +25,9 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
-    if params[:search]
-      #@libraries = Library.find(:all, :conditions => ["name LIKE (?)", "%#{params[:search]}%"])
-      @libraries = Library.where("name LIKE '%#{params[:search]}%'")
+    if params[:search] || params[:search_sub]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+      @subscribers = Subscriber.where("name LIKE '%#{params[:search_sub]}%'")
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
