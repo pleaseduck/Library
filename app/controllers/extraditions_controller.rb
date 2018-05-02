@@ -25,9 +25,10 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
-    if params[:search] || params[:search_sub]
+    if params[:search] || params[:search_sub] || params[:library_id]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
-      @subscribers = Subscriber.where("name LIKE '%#{params[:search_sub]}%'")
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
@@ -90,7 +91,7 @@ class ExtraditionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def extradition_params
       #params.fetch(:page, {name})
-      params[:extradition].permit(:subscriber_id, :book_id,:library_id, :extradition_date)
+      params[:extradition].permit(:subscriber_id, :book_id,:library_id, :extradition_date, :search, :search_sub, :utf8)
     end
 
 end

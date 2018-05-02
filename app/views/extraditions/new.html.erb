@@ -15,7 +15,10 @@
         <tbody>
           <tr>
             <td class="search-wrapper">
-              <%= form_tag new_extradition_path,:class => "search-form", :method => "get" do %>
+              <%= form_tag( new_extradition_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get") do %>
+                <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
                 <%= text_field_tag :search, params[:search], :class => "form-control",:placeholder => "Название библиотеки" %>
                 <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
               <% end %>
@@ -23,7 +26,7 @@
           </tr>
           <% @libraries.each do |library| %>
           <tr>
-            <td><%= link_to library.name, new_extradition_path(library_id: library.id)  %></td>
+            <td><%= link_to library.name, new_extradition_path(library_id: library.id, search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id])  %></td>
           </tr>
         <% end %>
         </tbody>
@@ -40,7 +43,10 @@
         <tbody>
           <tr>
             <td class="search-wrapper">
-              <%= form_tag new_extradition_path,:class => "search-form", :method => "get" do %>
+              <%= form_tag new_extradition_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
+              <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
                 <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control",:placeholder => "Имя абонента" %>
                 <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
               <% end %>
@@ -48,7 +54,7 @@
           </tr>
           <% @subscribers.each do |subscriber| %>
           <tr>
-            <td><%= link_to subscriber.name, new_extradition_path(subscriber_id: subscriber.id) %></td>
+            <td><%= link_to subscriber.name, new_extradition_path(subscriber_id: subscriber.id, search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id]) %></td>
           </tr>
         <% end %>
         </tbody>
