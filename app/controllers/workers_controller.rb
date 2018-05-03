@@ -9,7 +9,7 @@ class WorkersController < ApplicationController
       @workers = Worker.all.where(library_id: params[:library_id])
     elsif params[:search]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
-      @workers = Worker.all.where(library_id: params[:library_id])
+      @workers = Worker.all
     else
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @workers = Worker.all

@@ -1,7 +1,7 @@
 class LibrariesController < ApplicationController
 
   def index
-    @libraries = Library.all.paginate(:page => params[:page], :per_page => 14)
+    @libraries = Library.all
   end
 
   # GET /pages/1

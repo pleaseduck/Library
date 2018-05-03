@@ -22,6 +22,10 @@ class ExtraditionsController < ApplicationController
       @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
       @books = Book.all.where(library_id: params[:library_id])
       @books = @books.where("name LIKE '%#{params[:search_book]}%'")
+    elsif params[:search]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+      @subscribers = Subscriber.all
+      @books = Book.all
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])

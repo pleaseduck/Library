@@ -9,7 +9,7 @@ class SubscribersController < ApplicationController
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
     elsif params[:search]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
-      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @subscribers = Subscriber.all
     else
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all

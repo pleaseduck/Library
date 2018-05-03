@@ -9,7 +9,7 @@ class BooksController < ApplicationController
       @books = Book.all.where(library_id: params[:library_id])
     elsif params[:search]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
-      @books = Book.all.where(library_id: params[:library_id])
+      @books = Book.all
     else
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
         @books = Book.all
