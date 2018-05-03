@@ -1,19 +1,37 @@
 class ExtraditionsController < ApplicationController
 
   def index
-    if params[:search]
+    @extraditions = Extradition.all
+    if params[:book_id]
+      @extraditions = Extradition.all.where(book_id: params[:book_id])
+    end
+
+    if params[:subscriber_id]
+      @extraditions = Extradition.all.where(subscriber_id: params[:subscriber_id])
+    end
+
+    if params[:search] && params[:search_sub] && params[:library_id]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
+      @books = Book.all.where(library_id: params[:library_id])
+      @books = @books.where("name LIKE '%#{params[:search_book]}%'")
+    elsif params[:search] && params[:search_sub] && params[:library_id]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
+      @books = Book.all.where(library_id: params[:library_id])
+      @books = @books.where("name LIKE '%#{params[:search_book]}%'")
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @extraditions = Extradition.all
     else
-      @extraditions = Extradition.all
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all
       @books = Book.all
     end
+
   end
 
   # GET /pages/1
@@ -25,10 +43,9 @@ class ExtraditionsController < ApplicationController
   # GET /pages/new
   def new
     @extradition = Extradition.new
-    if params[:search] || params[:search_sub] || params[:library_id]
+    if params[:search] || params[:library_id]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])

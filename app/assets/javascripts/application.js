@@ -14,9 +14,20 @@
 //= require turbolinks
 //= require_tree .
 
-document.addEventListener("DOMContentLoaded", function() {
+/*document.addEventListener("DOMContentLoaded", function() {
   document.querySelector(".library-filter__header").addEventListener("click",function() {
     document.querySelector(".library-filter tbody").classList.toggle("hidden");
     document.querySelector(".pagination--library").classList.toggle("hidden");
+    document.querySelector(".library-filter__header").classList.toggle("library-filter__header--active");
   });
-});
+  document.querySelector(".subscriber-filter__header").addEventListener("click",function() {
+    document.querySelector(".subscriber-filter tbody").classList.toggle("hidden");
+    document.querySelector(".pagination--subscriber").classList.toggle("hidden");
+    document.querySelector(".subscriber-filter__header").classList.toggle("library-filter__header--active");
+  });
+  document.querySelector(".book-filter__header").addEventListener("click",function() {
+    document.querySelector(".book-filter tbody").classList.toggle("hidden");
+    document.querySelector(".pagination--book").classList.toggle("hidden");
+    document.querySelector(".book-filter__header").classList.toggle("library-filter__header--active");
+  });
+});*/

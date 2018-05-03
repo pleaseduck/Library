@@ -2,26 +2,94 @@
 <h1>Выдачи</h1>
 <div class="container">
   <div class="row">
-    <div class="col-sm-2">
-      <table class="table">
-        <thead>
+    <div class="col-sm-3">
+      <table class="table  library-filter">
+          <thead>
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4>Выберите библиотеку</h4>
+          <h4 class="library-filter__header  library-filter__header--active"> Библиотека </h4>
         </thead>
-
         <tbody>
+          <tr>
+            <td class="search-wrapper">
+              <%= form_tag( extraditions_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get") do %>
+                <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search_book, params[:search_book], :class => "form-control",:class => "hidden" %>
+                <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search, params[:search], :class => "form-control",:placeholder => "Название библиотеки" %>
+                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+              <% end %>
+            </td>
+          </tr>
           <% @libraries.each do |library| %>
           <tr>
-            <td><%= link_to library.name, extraditions_path(library_id: library.id) %></td>
+            <td><%= link_to library.name, extraditions_path(library_id: library.id, search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id], book_id: params[:book_id])  %></td>
           </tr>
         <% end %>
-        <%= will_paginate @libraries %>
         </tbody>
       </table>
+      <%= will_paginate @libraries, :class => "pagination  pagination--library" %>
+
+      <table class="table  subscriber-filter">
+          <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4 class="subscriber-filter__header"> Абонент</h4>
+        </thead>
+        <tbody class="hidden">
+          <tr>
+            <td class="search-wrapper">
+              <%= form_tag extraditions_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
+              <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :search_book, params[:search_book], :class => "form-control",:class => "hidden" %>
+              <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control",:placeholder => "Имя абонента" %>
+                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+              <% end %>
+            </td>
+          </tr>
+          <% @subscribers.each do |subscriber| %>
+          <tr>
+            <td><%= link_to subscriber.name, extraditions_path(subscriber_id: subscriber.id, search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id], book_id: params[:book_id]) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @libraries, :class => "pagination  pagination--subscriber  hidden" %>
+
+      <table class="table  book-filter">
+          <thead>
+          <tr>
+            <th colspan="4"></th>
+          </tr>
+          <h4 class="book-filter__header"> Книга</h4>
+        </thead>
+        <tbody class="hidden">
+          <tr>
+            <td class="search-wrapper">
+              <%= form_tag extraditions_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
+              <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :search, params[:search], :class => "form-control", :class => "hidden" %>
+              <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
+                <%= text_field_tag :search_book, params[:search_book], :class => "form-control",:placeholder => "Название книги" %>
+                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+              <% end %>
+            </td>
+          </tr>
+          <% @books.each do |book| %>
+          <tr>
+            <td><%= link_to book.name, extraditions_path(subscriber_id: params[:subscriber_id], search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id],book_id: book.id) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @libraries, :class => "pagination  pagination--book  hidden"%>
     </div>
-    <div class="col-sm-9 col-sm-offset-1">
+    <div class="col-sm-8 col-sm-offset-1">
       <table class="table">
         <thead>
           <tr>
@@ -33,8 +101,8 @@
         <tbody>
           <% @extraditions.each do |extradition| %>
             <tr>
-              <td>Идентификатор абонента: <%= extradition.subscriber_id %></td>
-              <td>Идентификатор книги: <%= extradition.book_id %></td>
+              <td>Имя абонента: <%= extradition.subscriber.name %></td>
+              <td>Название книги: <%= extradition.book.name %></td>
               <td><%= link_to 'Показать', extradition %></td>
               <td><%= link_to 'Редактировать', edit_extradition_path(extradition) %></td>
               <td><%= link_to 'Удалить', extradition, method: :delete, data: { confirm: 'Вы уверены?' } %></td>

@@ -2,14 +2,15 @@
 
 <h1><%= @worker.name%> <%= @worker.patronymic %> <%= @worker.surname%></h1>
 <br>
-<h4>День рождения: <br><%= @worker.birthday%></h4>
-<br>
-<h4>День принятия на работу: <br><%= @worker.employment_day%></h4>
-<br>
 <h4>Образование: <br><%= @worker.education%></h4>
 <br>
 <h4>Должность: <br><%= @worker.position%></h4>
 <br>
 <h4>Место работы: <br><%= @worker.library.name%></h4>
+<br>
+<h4>День рождения: <br><%= @worker.birthday%></h4>
+<br>
+<h4>День принятия на работу: <br><%= @worker.employment_day%></h4>
+<br>
 <%= link_to 'Редактировать', edit_worker_path(@worker) %> |
 <%= link_to 'Назад', workers_path %>

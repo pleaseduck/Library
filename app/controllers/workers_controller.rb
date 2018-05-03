@@ -1,11 +1,17 @@
 class WorkersController < ApplicationController
 
   def index
-    if params[:library_id]
-      @libraries = Library.all
+    if params[:search] && params[:library_id]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
+      @workers = Worker.all.where(library_id: params[:library_id])
+    elsif params[:library_id]
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
+      @workers = Worker.all.where(library_id: params[:library_id])
+    elsif params[:search]
+      @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
       @workers = Worker.all.where(library_id: params[:library_id])
     else
-      @libraries = Library.all
+      @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
       @workers = Worker.all
     end
   end

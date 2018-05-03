@@ -32,33 +32,6 @@
         </tbody>
       </table>
       <%= will_paginate @libraries, :class => "pagination  pagination--library" %>
-
-      <table class="table  subscriber-filter">
-          <thead>
-          <tr>
-            <th colspan="4"></th>
-          </tr>
-          <h4 class="subscriber-filter__header"> Абоненты</h4>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="search-wrapper">
-              <%= form_tag new_extradition_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
-              <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
-              <%= text_field_tag :search, params[:search], :class => "form-control", :class => "hidden" %>
-              <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
-                <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control",:placeholder => "Имя абонента" %>
-                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
-              <% end %>
-            </td>
-          </tr>
-          <% @subscribers.each do |subscriber| %>
-          <tr>
-            <td><%= link_to subscriber.name, new_extradition_path(subscriber_id: subscriber.id, search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id]) %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
     </div>
     <div class="col-sm-8 col-sm-offset-1">
       <table class="table">

@@ -4,16 +4,24 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <table class="table">
         <thead>
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4>Выберите библиотеку</h4>
+          <h4>Библиотека</h4>
         </thead>
 
         <tbody>
+          <tr>
+            <td class="search-wrapper">
+              <%= form_tag( subscribers_path,:class => "search-form", :method => "get") do %>
+                <%= text_field_tag :search, params[:search], :class => "form-control",:placeholder => "Название библиотеки" %>
+                <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+              <% end %>
+            </td>
+          </tr>
           <% @libraries.each do |library| %>
           <tr>
             <td><%= link_to library.name, subscribers_path(library_id: library.id) %></td>
@@ -21,8 +29,9 @@
         <% end %>
         </tbody>
       </table>
+      <%= will_paginate @libraries %>
     </div>
-    <div class="col-sm-9 col-sm-offset-1">
+    <div class="col-sm-8 col-sm-offset-1">
       <table class="table">
         <thead>
           <tr>

@@ -102,3 +102,23 @@ label {
 .library-filter {
   margin-bottom: 0;
 }
+.library-filter__header, .subscriber-filter__header, .book-filter__header {
+position: relative;
+padding-left: 20px;
+}
+.library-filter__header::after,.subscriber-filter__header::after, .book-filter__header::after  {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 0;
+  border: 10px solid transparent;
+  border-left: 10px solid grey;
+}
+.library-filter__header--active::after,.subsciber-filter__header--active::after,.book-filter__header--active::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    border: 10px solid transparent;
+    border-top: 10px solid grey;
+}

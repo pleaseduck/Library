@@ -5,6 +5,7 @@
     <%= f.association :subscriber, label: 'Абонент', collection: Subscriber.all.where(library_id: params[:library_id])%>
     <%= f.association :book, label: 'Книга', collection: Book.all.where(library_id: params[:library_id]) %>
     <%= f.input :extradition_date, as: :string, input_html: {type: :date}, label: 'Дата выдачи' %>
+    <%= f.input :return_date, as: :string, input_html: {type: :date}, label: 'Дата возврата' %>
   </div>
 
   <div class="form-actions">

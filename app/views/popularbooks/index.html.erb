@@ -4,25 +4,34 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-2">
-      <table class="table">
-        <thead>
-          <tr>
-            <th colspan="4"></th>
-          </tr>
-          <h4>Выберите библиотеку</h4>
-        </thead>
+  <div class="col-sm-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="4"></th>
+        </tr>
+        <h4>Библиотека</h4>
+      </thead>
 
-        <tbody>
-          <% @libraries.each do |library| %>
-          <tr>
-            <td><%= link_to library.name, popularbooks_path(library_id: library.id) %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-sm-9 col-sm-offset-1">
+      <tbody>
+        <tr>
+          <td class="search-wrapper">
+            <%= form_tag( popularbooks_path,:class => "search-form", :method => "get") do %>
+              <%= text_field_tag :search, params[:search], :class => "form-control",:placeholder => "Название библиотеки" %>
+              <%= submit_tag "Поиск", :name => nil,:class => "btn" %>
+            <% end %>
+          </td>
+        </tr>
+        <% @libraries.each do |library| %>
+        <tr>
+          <td><%= link_to library.name, subscribers_path(library_id: library.id) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @libraries %>
+  </div>
+    <div class="col-sm-8 col-sm-offset-1">
       <table class="table">
         <thead>
           <tr>
@@ -34,9 +43,10 @@
         <tbody>
           <% @books.each do |book| %>
             <tr>
-              <td><%= book.name %></td>
-              <td>Шифр книги: <%= book.cipher %></td>
-              <td><%= link_to 'Показать', book %></td>
+              <td> Название: <%= book.name %></td>
+              <td>Автор: <%= book.author %></td>
+              <td>Рейтинг: <%= book.extraditions.count %></td>
+              <td><%= link_to 'Показать', book, :target => "_blank" %></td>
             </tr>
           <% end %>
         </tbody>
