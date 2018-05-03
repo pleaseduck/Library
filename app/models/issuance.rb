@@ -1,4 +1,4 @@
-class Extradition < ActiveRecord::Base
+class Issuance < ActiveRecord::Base
   belongs_to :subscriber
   belongs_to :book
 
@@ -14,15 +14,15 @@ class Extradition < ActiveRecord::Base
    validates_presence_of :book_id,
     :message => "Поле книги не может быть пустым"
 
-    validates_presence_of :extradition_date,
+    validates_presence_of :issuance_date,
      :message => "Поле даты выдачи не может быть пустым"
   def create
-    Extradition.create(extradition_params)
+    Issuance.create(issuance_params)
   end
 
   private
 
-  def extradition_params
-    params.require(extradition).permit( :subscriber_id, :book_id)
+  def issuance_params
+    params.require(issuance).permit( :subscriber_id, :book_id)
   end
 end

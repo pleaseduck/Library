@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  has_many :extraditions
-  has_many :subscribers, :through => :extraditions
+  has_many :issuances
+  has_many :subscribers, :through => :issuances
 
   belongs_to :library, dependent: :destroy
 

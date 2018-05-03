@@ -1,7 +1,7 @@
 class Subscriber < ActiveRecord::Base
   belongs_to :library, dependent: :destroy
-  has_many :extraditions
-  has_many :books, :through => :extraditions
+  has_many :issuances
+  has_many :books, :through => :issuances
 
   validates_presence_of :name,
    :message => "Поле имени не может быть пустым"

@@ -1,10 +1,10 @@
 
-<%= simple_form_for(@extradition) do |f| %>
+<%= simple_form_for(@issuance) do |f| %>
 
   <div class="form-inputs">
     <%= f.association :subscriber, label: 'Абонент', collection: Subscriber.all.where(library_id: params[:library_id])%>
     <%= f.association :book, label: 'Книга', collection: Book.all.where(library_id: params[:library_id]) %>
-    <%= f.input :extradition_date, as: :string, input_html: {type: :date}, label: 'Дата выдачи' %>
+    <%= f.input :issuance_date, as: :string, input_html: {type: :date}, label: 'Дата выдачи' %>
     <%= f.input :return_date, as: :string, input_html: {type: :date}, label: 'Дата возврата' %>
   </div>
 

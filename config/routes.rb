@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :workers
   resources :subscribers
   resources :books
-  resources :extraditions
+  resources :issuances
   resources :popularbooks
 
   root 'libraries#index'
@@ -22,8 +22,8 @@ Rails.application.routes.draw do
   get "books", to: "books#index"
   get "books/show", to: "books#show"
 
-  get "extraditions", to: "extraditions#index"
-  get "extraditions/show", to: "extraditions#show"
+  get "issuances", to: "issuances#index"
+  get "issuances/show", to: "issuances#show"
 
   get "popularbooks", to: "popularbooks#index"
   get "popularboks/show", to: "popularboks#show"

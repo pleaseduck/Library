@@ -24,19 +24,19 @@ ActiveRecord::Schema.define(version: 20180429124844) do
     t.string "entrance_date", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "extraditions_count", default: 0
+    t.integer "issuances_count", default: 0
     t.index ["library_id"], name: "index_books_on_library_id"
   end
 
-  create_table "extraditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "issuances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "subscriber_id"
     t.bigint "book_id"
-    t.date "extradition_date"
+    t.date "issuance_date"
     t.date "return_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_extraditions_on_book_id"
-    t.index ["subscriber_id"], name: "index_extraditions_on_subscriber_id"
+    t.index ["book_id"], name: "index_issuances_on_book_id"
+    t.index ["subscriber_id"], name: "index_issuances_on_subscriber_id"
   end
 
   create_table "libraries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

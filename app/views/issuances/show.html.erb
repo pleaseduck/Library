@@ -1,0 +1,12 @@
+<% content_for :title, "Просмотр выдачи" %>
+
+<h4>Название книги: <br><%= @issuance.book.name%></h4>
+<br>
+<h4>Идентификатор книги: <br><%= @issuance.subscriber.name%></h4>
+<br>
+<h4>Дата выдачи: <br><%= @issuance.issuance_date%></h4>
+<br>
+<h4>Дата возврата: <br><%= @issuance.return_date%></h4>
+<br>
+<%= link_to 'Редактировать', edit_issuance_path(@issuance) %> |
+<%= link_to 'Назад', issuances_path %>

@@ -15,7 +15,7 @@
         <tbody>
           <tr>
             <td class="search-wrapper">
-              <%= form_tag( new_extradition_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get") do %>
+              <%= form_tag( new_issuance_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get") do %>
                 <%= text_field_tag :library_id, params[:library_id], :class => "form-control", :class => "hidden" %>
                 <%= text_field_tag :search_sub, params[:search_sub], :class => "form-control", :class => "hidden" %>
                 <%= text_field_tag :subscriber_id, params[:subscriber_id], :class => "form-control", :class => "hidden" %>
@@ -26,7 +26,7 @@
           </tr>
           <% @libraries.each do |library| %>
           <tr>
-            <td><%= link_to library.name, new_extradition_path(library_id: library.id, search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id])  %></td>
+            <td><%= link_to library.name, new_issuance_path(library_id: library.id, search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id])  %></td>
           </tr>
         <% end %>
         </tbody>
@@ -44,12 +44,12 @@
 
         <tbody>
             <tr>
-              <td class="form-handler"><%= render 'form', extradition: @extradition %></td>
+              <td class="form-handler"><%= render 'form', issuance: @issuance %></td>
             </tr>
 
         </tbody>
       </table>
-      <%= link_to 'Назад', extraditions_path %>
+      <%= link_to 'Назад', issuances_path %>
     </div>
   </div>
 </div>
