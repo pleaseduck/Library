@@ -1,6 +1,7 @@
 class Issuance < ActiveRecord::Base
   belongs_to :subscriber
   belongs_to :book
+  counter_culture :book
 
   def self.search(search)
     if search

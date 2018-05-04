@@ -92,7 +92,7 @@ class IssuancesController < ApplicationController
   # PATCH/PUT /pages/1.json
   def update
     @issuance = Issuance.where(id: params[:id]).first
-    @issuance.update_attributes(Issuance_params)
+    @issuance.update_attributes(issuance_params)
     if @issuance.errors.empty?
       redirect_to issuance_path(@issuance)
     else
@@ -112,7 +112,7 @@ class IssuancesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def issuance_params
       #params.fetch(:page, {name})
-      params[:issuance].permit(:subscriber_id, :book_id,:library_id, :issuance_date, :search, :search_sub, :utf8)
+      params[:issuance].permit(:subscriber_id, :book_id,:library_id, :issuance_date,:return_date, :search, :search_sub, :utf8)
     end
 
 end

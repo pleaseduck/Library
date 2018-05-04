@@ -45,7 +45,7 @@
             <tr>
               <td> Название: <%= book.name %></td>
               <td>Автор: <%= book.author %></td>
-              <td>Рейтинг: <%= book.issuances.count %></td>
+              <td>Рейтинг: <%= book.issuances_count %></td>
               <td><%= link_to 'Показать', book, :target => "_blank" %></td>
             </tr>
           <% end %>

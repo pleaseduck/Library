@@ -40,6 +40,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    after_commit_action (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     arel (8.0.0)
     awesome_print (1.8.0)
     bindex (0.5.0)
@@ -63,6 +66,10 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
+    counter_culture (1.10.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     crass (1.0.4)
     curl (0.0.9)
       awesome_print (>= 0.2.1)
@@ -197,6 +204,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  counter_culture (~> 1.8)
   curl (~> 0.0.9)
   dynamic_form
   jbuilder (~> 2.5)

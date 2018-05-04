@@ -1,6 +1,6 @@
 class Subscriber < ActiveRecord::Base
-  belongs_to :library, dependent: :destroy
-  has_many :issuances
+  belongs_to :library
+  has_many :issuances, dependent: :destroy
   has_many :books, :through => :issuances
 
   validates_presence_of :name,

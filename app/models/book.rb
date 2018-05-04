@@ -1,8 +1,8 @@
 class Book < ActiveRecord::Base
-  has_many :issuances
+  has_many :issuances, dependent: :destroy
   has_many :subscribers, :through => :issuances
 
-  belongs_to :library, dependent: :destroy
+  belongs_to :library
 
   validates_presence_of :name,
    :message => "Поле названия книги не может быть пустым"
@@ -18,8 +18,6 @@ class Book < ActiveRecord::Base
 
       validates_presence_of :library,
        :message => "Поле библиотеки не может быть пустым"
-      validates_associated :library,
-      :message => "dgk"
   def create
     Book.create(book_params)
   end

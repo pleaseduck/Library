@@ -5,12 +5,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-      <table class="table  library-filter">
+      <table class="table">
           <thead>
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4 class="library-filter__header"> Выберите библиотеку</h4>
+          <h4> Выберите библиотеку</h4>
         </thead>
         <tbody>
           <tr>
@@ -31,7 +31,7 @@
         <% end %>
         </tbody>
       </table>
-      <%= will_paginate @libraries, :class => "pagination  pagination--library" %>
+      <%= will_paginate @libraries, :class => "pagination" %>
     </div>
     <div class="col-sm-8 col-sm-offset-1">
       <table class="table">
