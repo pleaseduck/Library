@@ -114,7 +114,7 @@ padding-left: 20px;
   border: 10px solid transparent;
   border-left: 10px solid grey;
 }
-.library-filter__header--active::after,.subsciber-filter__header--active::after,.book-filter__header--active::after {
+.library-filter__header--active::after,.subscriber-filter__header--active::after,.book-filter__header--active::after {
     content: '';
     position: absolute;
     left: -10px;

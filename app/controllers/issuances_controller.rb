@@ -13,27 +13,27 @@ class IssuancesController < ApplicationController
     if params[:search] && params[:search_sub] && params[:library_id]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
+      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'").paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
-      @books = @books.where("name LIKE '%#{params[:search_book]}%'")
+      @books = @books.where("name LIKE '%#{params[:search_book]}%'").paginate(:page => params[:page], :per_page => 5).paginate(:page => params[:page], :per_page => 5)
     elsif params[:search] && params[:search_sub] && params[:library_id]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
       @subscribers = Subscriber.all.where(library_id: params[:library_id])
-      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'")
+      @subscribers = @subscribers.where("name LIKE '%#{params[:search_sub]}%'").paginate(:page => params[:page], :per_page => 5)
       @books = Book.all.where(library_id: params[:library_id])
-      @books = @books.where("name LIKE '%#{params[:search_book]}%'")
+      @books = @books.where("name LIKE '%#{params[:search_book]}%'").paginate(:page => params[:page], :per_page => 5)
     elsif params[:search]
       @libraries = Library.where("name LIKE '%#{params[:search]}%'").paginate(:page => params[:page], :per_page => 5)
-      @subscribers = Subscriber.all
-      @books = Book.all
+      @subscribers = Subscriber.all.paginate(:page => params[:page], :per_page => 5)
+      @books = Book.all.paginate(:page => params[:page], :per_page => 5)
     elsif params[:library_id]
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
-      @books = Book.all.where(library_id: params[:library_id])
-      @subscribers = Subscriber.all.where(library_id: params[:library_id])
+      @books = Book.all.where(library_id: params[:library_id]).paginate(:page => params[:page], :per_page => 5)
+      @subscribers = Subscriber.all.where(library_id: params[:library_id]).paginate(:page => params[:page], :per_page => 5)
     else
       @libraries = Library.all.paginate(:page => params[:page], :per_page => 5)
-      @subscribers = Subscriber.all
-      @books = Book.all
+      @subscribers = Subscriber.all.paginate(:page => params[:page], :per_page => 5)
+      @books = Book.all.paginate(:page => params[:page], :per_page => 5)
     end
 
   end

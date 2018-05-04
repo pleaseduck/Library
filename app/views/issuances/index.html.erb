@@ -37,9 +37,9 @@
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4 class="subscriber-filter__header"> Абонент</h4>
+          <h4 class="subscriber-filter__header  subscriber-filter__header--active"> Абонент</h4>
         </thead>
-        <tbody class="hidden">
+        <tbody>
           <tr>
             <td class="search-wrapper">
               <%= form_tag issuances_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
@@ -54,21 +54,21 @@
           </tr>
           <% @subscribers.each do |subscriber| %>
           <tr>
-            <td><%= link_to subscriber.name, issuances_path(subscriber_id: subscriber.id, search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id], book_id: params[:book_id]) %></td>
+            <td><%= link_to "#{subscriber.name} #{subscriber.patronymic} #{subscriber.surname}", issuances_path(subscriber_id: subscriber.id, search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id], book_id: params[:book_id]) %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
-      <%= will_paginate @libraries, :class => "pagination  pagination--subscriber  hidden" %>
+      <%= will_paginate @subscribers, :class => "pagination  pagination--subscriber" %>
 
       <table class="table  book-filter">
           <thead>
           <tr>
             <th colspan="4"></th>
           </tr>
-          <h4 class="book-filter__header"> Книга</h4>
+          <h4 class="book-filter__header  book-filter__header--active"> Книга</h4>
         </thead>
-        <tbody class="hidden">
+        <tbody>
           <tr>
             <td class="search-wrapper">
               <%= form_tag issuances_path(library_id: params[:library_id], search: params[:search], search_sub: params[:search_sub], subscriber_id: params[:subscriber_id]),:class => "search-form", :method => "get" do %>
@@ -82,12 +82,12 @@
           </tr>
           <% @books.each do |book| %>
           <tr>
-            <td><%= link_to book.name, issuances_path(subscriber_id: params[:subscriber_id], search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id],book_id: book.id) %></td>
+            <td><%= link_to "«#{book.name}» #{book.author}", issuances_path(subscriber_id: params[:subscriber_id], search: params[:search], search_sub: params[:search_sub], library_id: params[:library_id],book_id: book.id) %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
-      <%= will_paginate @libraries, :class => "pagination  pagination--book  hidden"%>
+      <%= will_paginate @books, :class => "pagination  pagination--book "%>
     </div>
     <div class="col-sm-8 col-sm-offset-1">
       <table class="table">
@@ -101,8 +101,8 @@
         <tbody>
           <% @issuances.each do |issuance| %>
             <tr>
-              <td>Имя абонента: <%= issuance.subscriber.name %></td>
-              <td>Название книги: <%= issuance.book.name %></td>
+              <td>Абонент: <%= "#{issuance.subscriber.name} #{issuance.subscriber.patronymic} #{issuance.subscriber.surname}" %></td>
+              <td>Книга: <%= "«#{issuance.book.name}» #{issuance.book.author}" %></td>
               <td><%= link_to 'Показать', issuance %></td>
               <td><%= link_to 'Редактировать', edit_issuance_path(issuance) %></td>
               <td><%= link_to 'Удалить', issuance, method: :delete, data: { confirm: 'Вы уверены?' } %></td>
